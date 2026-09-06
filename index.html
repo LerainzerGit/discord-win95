@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Windows 95</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; display: flex; flex-direction: column; }
+        #control-bar { background: #2f3136; padding: 8px; display: flex; align-items: center; border-bottom: 2px solid #202225; }
+        button { background: #ed4245; color: white; border: none; padding: 6px 12px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #c93b3e; }
+        iframe { flex-grow: 1; width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Control Bar with Instant Reboot Button -->
+    <div id="control-bar">
+        <button onclick="rebootVM()">🔄 Instant Reboot</button>
+    </div>
+
+    <!-- Embed the official copy.sh Windows 95 Environment -->
+    <iframe id="win95-frame" src="https://copy.sh" allow="autoplay; keyboard"></iframe>
+
+    <script>
+        // Force-reloads the iframe to instantly restart Windows 95
+        function rebootVM() {
+            const frame = document.getElementById('win95-frame');
+            frame.src = frame.src; 
+        }
+
+        // Dynamically load Discord's Official Embedded App SDK using JavaScript
+        const script = document.createElement('script');
+        script.src = "https://jsdelivr.net";
+        script.onload = () => {
+            // Once the script loads, initialize the SDK
+            const discordSdk = new window.discordSdk.DiscordSDK("YOUR_CLIENT_ID_HERE");
+            discordSdk.ready().then(() => {
+                console.log("Windows 95 Discord Activity is live via JS SDK injection!");
+            });
+        };
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
